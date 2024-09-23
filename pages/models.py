@@ -10,7 +10,7 @@ class Product(models.Model):
     PRDbase_productimage=models.ImageField(upload_to='products/%y/%m/%d' , verbose_name=_('product image'))
     PRDdescription=models.TextField(max_length=500,verbose_name=_('product description'))
     PRDprice=models.DecimalField(max_digits=5,decimal_places=2,verbose_name=_('product price'))
-    PRDdiscountprice=models.DecimalField(max_digits=5,decimal_places=2,verbose_name=_('product offer'))
+    PRDdiscountprice=models.DecimalField(max_digits=5,decimal_places=2,verbose_name=_('product offer'),blank=True, null=True)
     PRDisnew=models.BooleanField(blank=True, null=True,verbose_name=_('is new product'))
     PRDcreated=models.DateTimeField(verbose_name=_('product created'))
 
