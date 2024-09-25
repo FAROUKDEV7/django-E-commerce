@@ -207,14 +207,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6>{{products.PRDname}}</h6>
-                                    <a href="#" class="add-cart">+ Add To Cart</a>
-                                    <div class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
+                                    <a href="#" class="add-cart">+ Add To Cart</a>                                  
                                     <h5>${{products.PRDprice}}</h5>
                                     <strike>${{products.PRDdiscountprice}}</strike>
                                     <div class="product__color__select">
@@ -228,9 +221,12 @@
                                             <input type="radio" id="pc-18">
                                         </label>
                                     </div>
+                                </div> 
+                                <div class="view_product">
+                                    <a href="{%url 'product_list:product_detail' products.slug%}">View Product</a>
                                 </div>
-                            </div>
-                        </div>
+                            </div>                          
+                        </div>                      
                         {% else %}                                                
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
@@ -244,15 +240,8 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6>{{products.PRDname}}</h6>
-                                    <a href="#" class="add-cart">+ Add To Cart</a>
-                                    <div class="rating">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>${{products.PRDprice}}</h5>
+                                    <a href="#" class="add-cart">+ Add To Cart</a>                             
+                                   <h5>${{products.PRDprice}}</h5>
                                     <div class="product__color__select">
                                         <label for="pc-4">
                                             <input type="radio" id="pc-4">
@@ -264,6 +253,9 @@
                                             <input type="radio" id="pc-6">
                                         </label>
                                     </div>
+                                </div>
+                                <div class="view_product">
+                                    <a href="{%url 'product_list:product_detail' products.slug%}">View Product</a>
                                 </div>
                             </div>
                         </div>

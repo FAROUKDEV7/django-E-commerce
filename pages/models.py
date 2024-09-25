@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy  as _
+from django.utils.text import slugify
 # Create your models here.
 
 
@@ -13,6 +14,13 @@ class Product(models.Model):
     PRDdiscountprice=models.DecimalField(max_digits=5,decimal_places=2,verbose_name=_('product offer'),blank=True, null=True)
     PRDisnew=models.BooleanField(blank=True, null=True,verbose_name=_('is new product'))
     PRDcreated=models.DateTimeField(verbose_name=_('product created'))
+    slug=models.SlugField(blank=True, null=True)
+
+
+
+    def save(self, *args, **kwargs):
+        self.slug=slugify(self.PRDname)
+        super(Product, self).save(*args, **kwargs) # Call the real save() method
 
     class Meta:
         verbose_name = 'Product'
