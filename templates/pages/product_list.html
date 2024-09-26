@@ -262,18 +262,32 @@
                         {% endif %} 
                         {% endfor %}
 
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="product__pagination">
-                                <a class="active" href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <span>...</span>
-                                <a href="#">21</a>
-                            </div>
+                    </div> 
+                    <div class="container ">
+                        <div class="row">
+                            
+                            {% if product_list.has_other_pages %}                                                                                  
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    
+                                    {% if product_list.has_previous %}                                                                                                                
+                                    <li class="page-item"><a class="page-link" href="?page={{product_list.previous_page_number}}">Previous</a></li>
+                                    {% endif %}
+                                    
+
+                                    {% for i in product_list.paginator.page_range %}                                                                                                  
+                                    <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                                    {% endfor %}
+
+
+                                    {% if product_list.has_next %}                                                                                            
+                                    <li class="page-item"><a class="page-link" href="?page={{product_list.next_page_number}}">Next</a></li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                            {% endif %}
                         </div>
-                    </div>
+                    </div>                   
                 </div>
             </div>
         </div>
@@ -292,3 +306,9 @@
     </div>
     <!-- Search End -->
 {% endblock content %}
+
+
+
+
+
+<script src="script.js"></script>
