@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     # apps
     'pages.apps.PagesConfig',
     'settings.apps.SettingsConfig',
+
+
+    # bootstrap
+    "bootstrap5form",
 ]
 
 MIDDLEWARE = [
