@@ -63,14 +63,14 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="{%static 'img/logo.png' %}" alt=""></a>
+                        <a href="{% url 'pages:index' %}"><img src="{%static 'img/logo.png' %}" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="">Home</a></li>
-                            <li><a href="">Shop</a></li>
+                            <li class="active"><a href="{% url 'pages:index' %}">Home</a></li>
+                            <li><a href="{% url 'pages:product_list' %}">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="./about.html">About Us</a></li>
@@ -80,7 +80,7 @@
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
+                            <li><a href="">Blog</a></li>
                             <li><a href="./contact.html">Contacts</a></li>
                         </ul>
                     </nav>

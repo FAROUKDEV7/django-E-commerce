@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # apps
     'pages.apps.PagesConfig',
     'settings.apps.SettingsConfig',
+    'blogs.apps.BlogsConfig',
 
 
     # bootstrap

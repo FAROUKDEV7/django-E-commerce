@@ -14,6 +14,9 @@ class Product(models.Model):
     PRDdiscountprice=models.DecimalField(max_digits=5,decimal_places=2,verbose_name=_('product offer'),blank=True, null=True)
     PRDisnew=models.BooleanField(blank=True, null=True,verbose_name=_('is new product'))
     PRDcreated=models.DateTimeField(verbose_name=_('product created'))
+    PRDbestsellers=models.BooleanField(default=False,verbose_name=_('best sellesrs'))
+    PRDnewarrivals=models.BooleanField(default=False,verbose_name=_('new arrivals'))
+    PRDhotsales=models.BooleanField(default=False,verbose_name=_('hot sales'))
     slug=models.SlugField(blank=True, null=True)
 
 
@@ -85,44 +88,6 @@ class Product_Accessories(models.Model):
 
     def __str__(self):
         return str(self.ACproduct_name)
-
-
-class Product_Bestsellers(models.Model):
-    BSbestsellers=models.ManyToManyField('Product',verbose_name=_('best sellers'))
-
-    class Meta:
-        verbose_name = 'Best seller'
-        verbose_name_plural = 'Best sellers'
-
-
-    def __str__(self):
-        return str(self.BSbestsellers)
-
-
-
-class  product_Newarrivals(models.Model):
-    NVnewarrivals=models.ManyToManyField('Product',verbose_name=_('new arrivals'))
-
-    class Meta:
-        verbose_name = 'New arrival'
-        verbose_name_plural = 'New arrivals'
-
-
-    def __str__(self):
-        return str(self.NVnewarrivals)
-
-
-
-class Product_Hotsales(models.Model):
-    HShotsales=models.ManyToManyField('Product',verbose_name=_('Hot Sales'))
-
-    class Meta:
-        verbose_name='Hot sale'
-        verbose_name_plural='Hot sales'
-
-    def __str__(self):
-        return str(self.HShotsales)
-    
 
 
 

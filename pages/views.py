@@ -8,7 +8,11 @@ from .forms import SignupForm
 
 
 def index(request):
-    return render(request,'pages/index.html')
+    products=Product.objects.all()
+    context={
+        'products':products,
+    }
+    return render(request,'pages/index.html',context)
 
 
 
