@@ -40,6 +40,7 @@ def product_detail(request,slug):
         'product_detail':product_detail,
         'product_image':product_image,
 
+
     }
     return render(request,'pages/product_detail.html',context)
 

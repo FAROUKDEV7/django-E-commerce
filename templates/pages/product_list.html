@@ -207,7 +207,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6>{{products.PRDname}}</h6>
-                                    <a href="#" class="add-cart">+ Add To Cart</a>                                  
+                                    <a href="#" class="add-cart"  onclick="addToCart({{products.id}},this)">+ Add To Cart</a>                                  
                                     <h5>${{products.PRDprice}}</h5>
                                     <strike>${{products.PRDdiscountprice}}</strike>
                                     <div class="product__color__select">
@@ -240,7 +240,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6>{{products.PRDname}}</h6>
-                                    <a href="#" class="add-cart">+ Add To Cart</a>                             
+                                    <a href="#" class="add-cart"  onclick="addToCart({{products.id}},this)">+ Add To Cart</a>                             
                                    <h5>${{products.PRDprice}}</h5>
                                     <div class="product__color__select">
                                         <label for="pc-4">
