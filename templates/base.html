@@ -60,20 +60,35 @@
     <script src="{%static 'js/owl.carousel.min.js' %}"></script>
     <script src="{%static 'js/main.js' %}"></script>
 
-    <!-- Add Product In Cart-->
+    <!-- jquery link -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- end jquery -->
+
+
     <script>
-        let arr=[];
-        function addToCart(id,ele){
-            arr.push(id);
-            localStorage.setItem('userCart', JSON.stringify(arr));
-            let items=JSON.parse(localStorage.getItem('userCart'));
-            $("#Cart").html(items.length);
-            
-
-
-            
-        };
+        $(document).on("click","#add-cart",function(e){
+            e.preventDefault();
+            $.ajax({
+                type:"POST",
+                url:"{%url 'add_cart'%}",
+                data:{
+                    product_id:$("#add-cart").val(),
+                    csrfmiddlewaretoken: "{{ csrf_token }}",                  
+                    action:"post"
+                },
+                success:function(json){
+                    document.getElementById("cart_quantity").textContent=json.qty
+                },
+                error:function(xhr,erromsg,error){
+                    
+                }
+            });
+        });
     </script>
+
+
+
 </body>
 
 </html>

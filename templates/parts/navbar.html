@@ -69,8 +69,8 @@
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="{% url 'pages:index' %}">Home</a></li>
-                            <li><a href="{% url 'pages:product_list' %}">Shop</a></li>
+                            <li ><a href="{% url 'pages:index' %}">Home</a></li>
+                            <li ><a href="{% url 'pages:product_list' %}">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="./about.html">About Us</a></li>
@@ -80,7 +80,7 @@
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="">Blog</a></li>
+                            <li><a href="{% url 'blog_list:blog_list' %}">Blog</a></li>
                             <li><a href="./contact.html">Contacts</a></li>
                         </ul>
                     </nav>
@@ -89,7 +89,8 @@
                     <div class="header__nav__option">
                         <a href="#" class="search-switch"><img src="{%static 'img/icon/search.png' %}" alt=""></a>
                         <a href="#"><img src="{%static 'img/icon/heart.png' %}" alt=""></a>
-                        <a href="#"><img src="{%static 'img/icon/cart.png' %}" alt="" > <span id="Cart">0</span></a>
+                        <a href="#"><img src="{%static 'img/icon/cart.png' %}" alt="" > <span id="cart_quantity">{{ cart|length }}
+                        </span></a>
                         <div class="price">$0.00</div>
                     </div>
                 </div>
