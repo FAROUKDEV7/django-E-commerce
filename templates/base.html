@@ -65,7 +65,7 @@
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- end jquery -->
 
-
+    <!--add to cart  -->
     <script>
         $(document).on("click","#add-cart",function(e){
             e.preventDefault();
@@ -74,6 +74,8 @@
                 url:"{%url 'add_cart'%}",
                 data:{
                     product_id:$("#add-cart").val(),
+                    product_qty:$("#qty-cart option:selected").
+                    text(),
                     csrfmiddlewaretoken: "{{ csrf_token }}",                  
                     action:"post"
                 },
@@ -89,6 +91,32 @@
 
 
 
+
+    <!-- update cart -->
+    <script>
+        $(document).on("click", ".update-cart", function (e) {
+            e.preventDefault();
+            var productid=$(this).data('index');
+            $.ajax({
+                type: "POST",
+                url: "{%url 'update_cart'%}",
+                data: {
+                    product_id: $(this).data('index'),
+                    product_qty: $('#select'+productid+' option:selected').
+                        text(),
+                    csrfmiddlewaretoken: "{{ csrf_token }}",
+                    action: "post"
+                },
+                success: function (json) {
+                    location.reload();
+                },
+                error: function (xhr, erromsg, error) {
+
+                }
+            });
+        });
+    </script>
+     
 </body>
 
 </html>

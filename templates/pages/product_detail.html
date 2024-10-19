@@ -74,7 +74,7 @@
                                 <i class="fa fa-star-o"></i>
                                 <span> - 5 Reviews</span>
                             </div>
-                            <h3>${{product_detail.PRDprice}} <span>{{product_detail.PRDdiscountprice}}</span></h3>
+                            <h3>${{product_detail.PRDdiscountprice}} <span>{{product_detail.PRDprice}}</span></h3>
                             <p>{{product_detail.PRDdescription}}
                             </p>
                             <div class="product__details__option">
@@ -112,11 +112,24 @@
                                     </label>
                                 </div>
                             </div>
+                            {% comment %} product number choices {% endcomment %}
                             <div class="product__details__cart__option">
                                 <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input type="text" value="1">
-                                    </div>
+                                    <select class="pro-qty" id="qty-cart">
+                                        {% for key , value in quantities.items %}                              
+                                            {% if key == product.id|slugify %}
+                                                <option selected>{{value}}</option>   
+                                            {% endif %}                                       
+                                        {% endfor %}
+
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                                                                        
+
+                                    </select>
                                 </div>                                                     
                                 <button class="primary-btn" value="{{product_detail.id}}" id="add-cart">add to cart</button>                             
                             </div>
@@ -311,12 +324,23 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="product__details__cart__option">
+                             <div class="product__details__cart__option">
                                 <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input type="text" value="1">
-                                    </div>
-                                </div>
+                                    <select class="pro-qty" id="qty-cart">
+                                        {% for key , value in quantities.items %}                              
+                                            {% if key == product.id|slugify %}
+                                                <option selected>{{value}}</option>   
+                                             {% endif %}                                       
+                                        {% endfor %}
+
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                                                                                        
+
+                                    </select>
                                 <button class="primary-btn" value="{{product_detail.id}}" id="add-cart">add to cart</button>
                             </div>
                             <div class="product__details__btns__option">
