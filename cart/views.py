@@ -6,10 +6,12 @@ from django.http import JsonResponse
 
 def cart_summary(request):
     cart=Cart(request)
-    product=cart.get_prods
+    product=cart.get_prods()
+    pro_id=[p.id for p in cart.get_prods()]
     quantities=cart.get_quants
     context={
         'product':product,
+        'pro_id':pro_id,
         'quantities':quantities,
     }
     return render(request,'cart/cart_summary.html',context)
@@ -46,5 +48,10 @@ def update_cart(request):
 
 
 def delete_cart(request):
-    pass
+    cart=Cart(request)
+    if request.POST.get("action") == "post":
+        product_id=int(request.POST.get('product_id'))
+        cart.delete(product=product_id)
+        response=JsonResponse({'product_id':product_id})
+        return response
 

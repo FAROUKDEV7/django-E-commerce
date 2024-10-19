@@ -116,6 +116,30 @@
             });
         });
     </script>
+
+
+
+    <!-- delete product -->
+    <script>
+        $(document).on("click", ".delete-product", function (e) {
+            e.preventDefault();          
+            $.ajax({
+                type: "POST",
+                url: "{%url 'delete_cart'%}",
+                data: {
+                    product_id: $(this).data('index'),
+                    csrfmiddlewaretoken: "{{ csrf_token }}",
+                    action: "post"
+                },
+                success: function (json) {
+                    location.reload();
+                },
+                error: function (xhr, erromsg, error) {
+
+                }
+            });
+        });
+    </script>
      
 </body>
 
