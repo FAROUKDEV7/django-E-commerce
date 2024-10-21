@@ -7,11 +7,11 @@ from django.http import JsonResponse
 def cart_summary(request):
     cart=Cart(request)
     product=cart.get_prods()
-    pro_id=[p.id for p in cart.get_prods()]
+    totals=cart.cart_total()
     quantities=cart.get_quants
     context={
         'product':product,
-        'pro_id':pro_id,
+        'totals':totals,
         'quantities':quantities,
     }
     return render(request,'cart/cart_summary.html',context)

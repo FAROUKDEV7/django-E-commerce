@@ -43,6 +43,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                               
                                                                                                            
                             {% if product.PRDdiscountprice %}                                                                                                                                                                                             
                             <tr>
@@ -53,8 +54,8 @@
                                     <div class="product__cart__item__text">
                                         <h6>{{product}}</h6>
                                         <h5>$<strike>{{product.PRDprice}}</strike></h5>                                                                            
-                                     </div>
-                                        {% comment %} product number choices {% endcomment %}
+                                    </div>
+                                        <!-- product number choices -->
                                 <td class="quantity__item">
                                     <div class="product__details__cart__option">
                                         <div class="quantity">
@@ -75,9 +76,7 @@
                                             </select>
                                         </div>
                                     </div>  
-                                </td> 
-                            
-                                
+                                </td>                               
                                     <td class="cart__price">$ {{product.PRDdiscountprice}}</td>
                                     <td class="cart__close delete-product" data-index="{{product.id}}"><i class="fa fa-close"></i></td>
                             </tr>
@@ -95,7 +94,6 @@
                                     <div class="product__details__cart__option">
                                         <div class="quantity">
                                             <select class="pro-qty" id="select{{product.id}}">
-                                        
                                             {% for key , value in quantities.items %}                              
                                                 {% if key == product.id|slugify %}
                                                 <option selected>{{value}}</option>   
@@ -106,8 +104,7 @@
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
                                                 <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                                                              
+                                                <option value="5">5</option>                                                      
                                             </select>
                                         </div>
                                     </div>  
@@ -129,9 +126,10 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn">
-                                <a href="#">Continue Shopping</a>
+                                <a href="{% url 'pages:index' %}">Continue Shopping</a>
                             </div>
-                        </div>  
+                        </div>
+                         
                         
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn update__btn">                                                                                                                                             
@@ -142,21 +140,32 @@
                     </div>
                 
                 </div>
+                
     {% endfor %}
-    {% else %}
-    <p>There's NoThing In Your Cart</p>
-    {% endif %}
-    
-                
-                
-            </div>
+    <div class="col-lg-4">
+        <div class="cart__discount">
+            <h6>Discount codes</h6>
+            <form action="#">
+                <input type="text" placeholder="Coupon code">
+                <button type="submit">Apply</button>
+            </form>
         </div>
-    </section>
+        <div class="cart__total">
+            <h6>Cart total</h6>
+            <ul>
+                <li>Total <span>$ {{totals}}</span></li>
+            </ul>
+            <a href="#" class="primary-btn">Proceed to checkout</a>
+        </div>
+    </div>
+    {% else %}
+    <p>There's NoThing In Your Cart...</p>
+    {% endif %} 
+
+                
+
     
-
-
-
-                           
+                     
 
 
 
