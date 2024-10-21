@@ -20,7 +20,13 @@ def index(request):
 
 
 def product_list(request):
-    product_list=Product.objects.all()
+    search=Product.objects.all()
+    title=None
+    if 'search-name' in request.GET:
+        title=request.GET['search-name']
+        if title:
+            search=search.filter(PRDname__icontains=title)
+    product_list=search
     paginator = Paginator(product_list, 3)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
