@@ -2,8 +2,11 @@ from django.shortcuts import render , redirect
 from .models import Product , Product_image
 from django.core.paginator import Paginator
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate , login , logout
 from .forms import SignupForm
+from .filters import ProductFilter
+
 # Create your views here.
 
 
@@ -18,7 +21,7 @@ def index(request):
 
 
 
-
+@login_required
 def product_list(request):
     search=Product.objects.all()
     title=None
@@ -27,11 +30,14 @@ def product_list(request):
         if title:
             search=search.filter(PRDname__icontains=title)
     product_list=search
+    my_filter=ProductFilter(request.GET,queryset=product_list)
+    product_list=my_filter.qs
     paginator = Paginator(product_list, 3)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
     context={
         'product_list':page_obj ,
+        'my_filter':my_filter,
     }
     return render(request,'pages/product_list.html',context)
 
