@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-rq1re&0qa8!&)5gf+fv5^d6thtrv_$41!&w2f-bzy#%m-2v0^d'
+SECRET_KEY ='django-insecure-rq1re&0qa8!&)5gf+fv5^d6thtrv_$41!&w2f-bzy#%m-2v0^d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'settings.apps.SettingsConfig',
     'blogs.apps.BlogsConfig',
     'cart.apps.CartConfig',
+    'contact.apps.ContactConfig',
 
 
     # bootstrap
@@ -52,6 +53,10 @@ INSTALLED_APPS = [
 
     # filter
     'django_filters',
+
+
+    # api
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -146,3 +151,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # media   ==>  related to images
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='media/'
+
+
+
+
+
+
+# Send Mail
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST= 'smtp.gmail.com'
+EMAIL_HOST_USER= 'faroukeldreinydev74@gmail.com'
+EMAIL_HOST_PASSWORD= 'yzum kukm kzxs sazh'
+EMAIL_USE_TLS = True
+EMAIL_PORT = "587"
