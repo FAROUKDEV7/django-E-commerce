@@ -71,17 +71,15 @@
                         <ul>
                             <li ><a href="{% url 'pages:index' %}">Home</a></li>
                             <li ><a href="{% url 'pages:product_list' %}">Shop</a></li>
-                            <li><a href="#">Pages</a>
+                            <li><a href="">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="./about.html">About Us</a></li>
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shopping-cart.html">Shopping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <li><a href="{% url 'product_list:product_list' %}">Shopping Cart</a></li>
+                                    <li><a href="{% url 'cart_summary' %}">Check Out</a></li>
+                                    <li><a href="{% url 'blog_list:blog_list' %}">Blog</a></li>
                                 </ul>
                             </li>
                             <li><a href="{% url 'blog_list:blog_list' %}">Blog</a></li>
-                            <li><a href="./contact.html">Contacts</a></li>
+                            <li><a href="{% url 'contact' %}">Contacts</a></li>
                         </ul>
                     </nav>
                 </div>
