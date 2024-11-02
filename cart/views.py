@@ -2,6 +2,15 @@ from django.shortcuts import render,get_object_or_404
 from .cart import Cart
 from pages.models import Product
 from django.http import JsonResponse
+import json
+from .models import Order
+
+# Import some paypal stuff
+from django.urls import reverse
+from paypal.standard.forms import PayPalPaymentsForm
+from django.conf import settings
+import uuid
+
 # Create your views here.
 
 def cart_summary(request):
@@ -55,3 +64,44 @@ def delete_cart(request):
         response=JsonResponse({'product_id':product_id})
         return response
 
+
+
+
+
+def checkout(request):
+    cart=Cart(request)
+    totals=cart.cart_total()
+    host=request.get_host()
+    paypal_dict={
+        'business':settings.PAYPAL_RECEIVER_EMAIL,
+        'amount':totals,
+        'item_name':'order',
+        'invoice':str(uuid.uuid4()),
+        'notify_url':'https://{}{}'.format(host,reverse("paypal-ipn")),
+        'notify_url':'https://{}{}'.format(host,reverse("payment_success")),
+        'notify_url':'https://{}{}'.format(host,reverse("payment_failed")),
+    }
+
+
+    # create paypal 
+    paypal_form=PayPalPaymentsForm(initial=paypal_dict)
+
+    context={
+        'totals':totals,
+        'paypal_form':paypal_form,
+    }
+
+    return render(request,'cart/checkout.html',context)
+
+
+
+
+
+def payment_success(request):
+    return render(request,'cart/payment_success')
+
+
+
+
+def payment_failed(request):
+    return render(request,'cart/payment_failed')

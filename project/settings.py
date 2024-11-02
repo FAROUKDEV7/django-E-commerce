@@ -57,6 +57,10 @@ INSTALLED_APPS = [
 
     # api
     'rest_framework',
+
+
+    # paypal
+    'paypal.standard.ipn',
 ]
 
 MIDDLEWARE = [
@@ -164,3 +168,11 @@ EMAIL_HOST_USER= 'faroukeldreinydev74@gmail.com'
 EMAIL_HOST_PASSWORD= 'yzum kukm kzxs sazh'
 EMAIL_USE_TLS = True
 EMAIL_PORT = "587"
+
+
+
+
+
+# paypal
+PAYPAL_TEST = True
+PAYPAL_RECEIVER_EMAIL='farouk@business.example.com'

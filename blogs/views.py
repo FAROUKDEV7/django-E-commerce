@@ -15,7 +15,9 @@ def blog_list(request):
 
 def blog_detail(request,slug):
     blog=Blog.objects.get(slug=slug)
+
     context={
         'blog':blog ,
+        
     }
     return render(request,'blogs/blog_detail.html',context)
