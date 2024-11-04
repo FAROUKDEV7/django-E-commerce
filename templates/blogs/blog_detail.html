@@ -84,6 +84,8 @@
                         <div class="blog__details__comment">
                             <h4>Leave A Comment</h4>
                             <form method="post">
+                                {% csrf_token %}
+                                {{form}}
     
                                    
                                         <button type="submit" class="site-btn">Post Comment</button>

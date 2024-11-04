@@ -31,6 +31,24 @@ class Blog(models.Model):
 
 
 
+class Comment(models.Model):
+    name=models.CharField(max_length=20,blank=True, null=True,verbose_name=_("Name"))
+    phone=models.CharField(max_length=20,blank=True, null=True,verbose_name=_("Phone"))
+    email=models.EmailField(max_length=100,blank=True, null=True,verbose_name=_("Email"))
+    comment=models.TextField(max_length=1000,blank=True, null=True,verbose_name=_("comment"))
+
+
+    class Meta:
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
+
+
+
+    def __str__(self):
+        return self.name
+    
+
+
 
 
 
